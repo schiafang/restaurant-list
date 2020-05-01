@@ -1,0 +1,36 @@
+<h1 class="mb-1 restaurant-show-title">{{restaurant.name}}</h1>
+<div class="container">
+  <div class="row">
+    <div class="mr-5">
+      <img class=" d-flex " src="{{restaurant.image}}" alt="{{restaurant.name}}" style="max-width: 500px;">
+    </div>
+    <div class="information ml-3 pt-2 mt-5 w-50">
+      <p class="mb-1">
+        <span class="text-secondary">
+          <i class="fas fa-utensils mr-2"></i>
+          類別：
+        </span>
+        {{restaurant.category}}
+      </p>
+      <p class="mb-1">
+        <span class="text-secondary">
+          <i class="fas fa-map-marker-alt mr-2"></i>
+          地址：
+        </span>
+        {{restaurant.location}}
+      </p>
+      <p class="mb-1">
+        <span class="text-secondary">
+          <i class="fas fa-mobile-alt mr-2"></i>
+          電話：
+        </span>
+        {{restaurant.phone}}
+      </p>
+      <p class="mt-3" style="color:#666666">
+        {{restaurant.description}}
+      </p>
+    </div>
+    <iframe class="rounded mx-auto d-block mb-4 w-100 mt-4" src="{{restaurant.google_map}}" width="400" height="300"
+      frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+  </div>
+</div>
