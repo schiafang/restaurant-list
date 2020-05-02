@@ -35,6 +35,10 @@
 ```
 $ git clone https://github.com/schiafang/restaurant-list.git
 ```
+Install express
+```
+$ npm i express
+```
 Execute app.js
 ```
 $ node app.js
@@ -49,4 +53,3 @@ browse [http://localhost:3000](http://localhost:3000)
 
 ---
 ![](https://img.shields.io/badge/%E9%80%99%E5%80%8B-%E6%A8%99%E7%B1%A4-%3CCOLOR%3E) ![](https://img.shields.io/badge/%E5%A5%BD-%E5%83%8F-yellow) ![](https://img.shields.io/badge/%E5%BE%88-%E5%8E%B2%E5%AE%B3-blue)
-
