@@ -7,6 +7,7 @@
 - [x] search restaurant with keyword of cuisine category
 - [x] click LOGO on upper left of page to back to index
 - [x] click restaurant info card to see more information 
+- [x] click phone number to call
 - [ ] add new restaurant to your restaurant list
 - [ ] manage your restaurant list
 
@@ -15,7 +16,7 @@
 1. Rating
 2. Introduction
 3. Address
-4. Phone number
+4. Phone number 
 5. Google Map location
    
 <br>
