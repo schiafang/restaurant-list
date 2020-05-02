@@ -34,7 +34,11 @@ app.get('/search', (req, res) => {
     return item.category.includes(keyword) ||
       item.name.toLowerCase().includes(keyword.toLowerCase())
   })
-  res.render('index', { restaurant: restaurants, keyword })
+  if (restaurants.length === 0) {
+    res.render('notfound')
+  } else {
+    res.render('index', { restaurant: restaurants, keyword })
+  }
 })
 
 app.listen(port, () => { console.log(`The server listening on localhost:${port}`) })
