@@ -6,3 +6,10 @@ if (pathname === '/search') {
     cardColumns.scrollIntoView({ behavior: 'smooth' })
   })
 }
+
+if (pathname === '/search') {
+  window.addEventListener('load', () => {
+    const notFound = document.querySelector('.notfound')
+    notFound.scrollIntoView({ behavior: 'smooth' })
+  })
+}
