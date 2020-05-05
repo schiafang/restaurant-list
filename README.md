@@ -42,7 +42,8 @@ $ npm i express
 ```
 Execute
 ```
-$  npm run dev
+$ npm run dev 
+or $ npm start
 ```
 
 `The server listening on localhost:3000` will show on terminal when server connect success.
