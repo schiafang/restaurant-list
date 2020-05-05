@@ -40,9 +40,9 @@ Install express
 ```
 $ npm i express
 ```
-Execute app.js
+Execute
 ```
-$ node app.js
+$  npm run dev
 ```
 
 `The server listening on localhost:3000` will show on terminal when server connect success.
