@@ -1,21 +1,24 @@
-/**
- * require Express
- * set static files location
- * require template engine : Handlebars
- * require restaurant JSON
- */
 const express = require('express')
 const app = express()
 const port = 3000
-app.use(express.static('public'))
 const exphbs = require('express-handlebars')
+const restaurantList = require('./restaurant.json').results
+const bodyParser = require('body-parser')
+const mongoose = require('mongoose')
+const db = mongoose.connection
+
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
-const restaurantList = require('./restaurant.json').results
+app.use(express.static('public'))
+app.use((bodyParser.urlencoded({ extended: true })))
+app.listen(port, () => console.log(`The server listening on localhost:${port}`))
 
-/**
- * set routing GET
- */
+// 連接啟動資料庫
+mongoose.connect('mongodb://localhost/restaurant-list', { useNewUrlParser: true, useUnifiedTopology: true })
+db.on('error', () => console.log('MongoDB error!'))
+db.once('open', () => console.log('MongoDB connected!'))
+
+// 路由設定
 app.get('/', (req, res) => {
   res.render('index', { restaurant: restaurantList })
 })
@@ -37,4 +40,3 @@ app.get('/search', (req, res) => {
   res.render('index', { restaurant: restaurants, keyword })
 })
 
-app.listen(port, () => { console.log(`The server listening on localhost:${port}`) })
