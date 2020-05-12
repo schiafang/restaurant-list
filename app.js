@@ -2,10 +2,11 @@ const express = require('express')
 const app = express()
 const port = 3000
 const exphbs = require('express-handlebars')
-const restaurantList = require('./restaurant.json').results
+// const restaurantList = require('./restaurant.json').results
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const db = mongoose.connection
+const Restaurant = require('./models/restaurant')
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
@@ -19,24 +20,30 @@ db.on('error', () => console.log('MongoDB error!'))
 db.once('open', () => console.log('MongoDB connected!'))
 
 // 路由設定
+// app.get('/', (req, res) => {
+//   res.render('index', { restaurant: restaurantList })
+// })
+// app.get('/restaurants/:id', (req, res) => {
+//   const restaurantId = restaurantList.find(item => {
+//     return item.id.toString() === req.params.id
+//   })
+//   res.render('show', { restaurant: restaurantId })
+// })
+// app.get('/search', (req, res) => {
+//   const keyword = req.query.keyword.trim()
+//   console.log(keyword)
+//   const restaurants = restaurantList.filter(item => {
+//     return item.category.includes(keyword) ||
+//       item.name.toLowerCase().includes(keyword.toLowerCase())
+//   })
+//   res.render('index', { restaurant: restaurants, keyword })
+// })
+
+//----- 連接 mongoDB 後的路由設定 -----//
+// 載入資料庫資料到首頁樣板中
 app.get('/', (req, res) => {
-  res.render('index', { restaurant: restaurantList })
+  Restaurant.find()
+    .lean()
+    .then(restaurant => res.render('index', { restaurant }))
+    .catch(error => console.eroor(error))
 })
-
-app.get('/restaurants/:id', (req, res) => {
-  const restaurantId = restaurantList.find(item => {
-    return item.id.toString() === req.params.id
-  })
-  res.render('show', { restaurant: restaurantId })
-})
-
-app.get('/search', (req, res) => {
-  const keyword = req.query.keyword.trim()
-  console.log(keyword)
-  const restaurants = restaurantList.filter(item => {
-    return item.category.includes(keyword) ||
-      item.name.toLowerCase().includes(keyword.toLowerCase())
-  })
-  res.render('index', { restaurant: restaurants, keyword })
-})
-
