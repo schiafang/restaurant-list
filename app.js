@@ -85,14 +85,16 @@ app.post('/:id/edit/update', (req, res) => {
     })
     .then(() => res.redirect(`/restaurants/${id}`))
     .catch(error => console.log(error))
-
 })
 
 // delete
 app.post('/:id/delete', (req, res) => {
   const id = req.params.id
   return Restaurant.findById(id)
-    // .then(() => alert('確定要刪除嗎？'))
+    // .then(restaurant => {
+    //   if (window.confirm('確定要刪除嗎')) { restaurant.remove() }
+    //   else { return }
+    // })
     .then(restaurant => restaurant.remove())
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))

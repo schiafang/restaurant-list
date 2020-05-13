@@ -33,4 +33,12 @@
     <iframe class="rounded mx-auto d-block mb-4 w-100 mt-4" src="{{restaurant.google_map}}" width="400" height="300"
       frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
   </div>
+  <div class="container">
+    <div class="row justify-content-end">
+      <a href="/{{ restaurant._id }}/edit" method="GET">
+        <button type="submit" class="edit-btn"><i class="far fa-edit fa-2x"></i></button></a>
+      <form action="/{{ restaurant._id }}/delete" method="POST">
+        <button type="submit" class="edit-btn"><i class="far fa-trash-alt fa-2x"></i></button></form>
+    </div>
+  </div>
 </div>
