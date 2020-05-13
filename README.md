@@ -53,10 +53,8 @@
 
 ## Installation
 
-[Download](https://github.com/schiafang/restaurant-list/archive/master.zip) or clone repository to your local computer.
-```
-$ git clone https://github.com/schiafang/restaurant-list.git
-```
+[Download](https://github.com/schiafang/restaurant-list/archive/database.zip)
+
 Install express
 ```
 $ npm i express
