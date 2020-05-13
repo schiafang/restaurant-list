@@ -26,7 +26,7 @@
 <br></br>
 ![navbar](https://i.imgur.com/c31asDR.png)
 
-![index](https://i.imgur.com/klvaLeU.png)
+![index](https://i.imgur.com/wEpXdGp.png)
 
 
 #### The restaurant information contain below :
@@ -41,7 +41,7 @@
    
 ![showpage](https://i.imgur.com/1xTizAv.png)
 
-![form](https://i.imgur.com/dVNzwfb.png)
+![form](https://i.imgur.com/uKcPepa.png)
 
 <br>
 
