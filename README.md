@@ -62,7 +62,7 @@ $ npm i express
 
 Require seeder
 ```
-$ npm run seeder
+$ npm run seed
 ```
 
 Execute
