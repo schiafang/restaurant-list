@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 const port = 3000
 const exphbs = require('express-handlebars')
-// const restaurantList = require('./restaurant.json').results
+const restaurantList = require('./restaurant.json').results
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const db = mongoose.connection
@@ -19,31 +19,53 @@ mongoose.connect('mongodb://localhost/restaurant-list', { useNewUrlParser: true,
 db.on('error', () => console.log('MongoDB error!'))
 db.once('open', () => console.log('MongoDB connected!'))
 
-// 路由設定
-// app.get('/', (req, res) => {
-//   res.render('index', { restaurant: restaurantList })
-// })
-// app.get('/restaurants/:id', (req, res) => {
-//   const restaurantId = restaurantList.find(item => {
-//     return item.id.toString() === req.params.id
-//   })
-//   res.render('show', { restaurant: restaurantId })
-// })
-// app.get('/search', (req, res) => {
-//   const keyword = req.query.keyword.trim()
-//   console.log(keyword)
-//   const restaurants = restaurantList.filter(item => {
-//     return item.category.includes(keyword) ||
-//       item.name.toLowerCase().includes(keyword.toLowerCase())
-//   })
-//   res.render('index', { restaurant: restaurants, keyword })
-// })
+// --------路由設定-------- //
+app.get('/search', (req, res) => {
+  const keyword = req.query.keyword.trim()
+  const restaurants = restaurantList.filter(item => {
+    return item.category.includes(keyword) ||
+      item.name.toLowerCase().includes(keyword.toLowerCase())
+  })
+  if (restaurants.length === 0) {
+    res.render('notfound')
+  } else {
+    res.render('index', { restaurant: restaurants, keyword })
+  }
+})
 
-//----- 連接 mongoDB 後的路由設定 -----//
 // 載入資料庫資料到首頁樣板中
 app.get('/', (req, res) => {
   Restaurant.find()
     .lean()
     .then(restaurant => res.render('index', { restaurant }))
     .catch(error => console.eroor(error))
+})
+// 渲染 show 頁面
+app.get('/restaurants/:id', (req, res) => {
+  const id = req.params.id
+  return Restaurant.findById(id)
+    .lean()
+    .then(restaurant => res.render('show', { restaurant }))
+})
+
+// create page and post new restaurant
+app.get('/create', (req, res) => res.render('create'))
+
+app.post('/create/new', (req, res) => {
+  if (req.body.image.length === 0) { req.body.image = 'https://www.teknozeka.com/wp-content/uploads/2020/03/wp-header-logo-33.png' }
+  const restaurant = req.body
+  return Restaurant.create(restaurant)
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
+})
+
+
+// delete
+app.post('/:id/delete', (req, res) => {
+  const id = req.params.id
+  return Restaurant.findById(id)
+    // .then(() => alert('確定要刪除嗎？'))
+    .then(restaurant => restaurant.remove())
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
 })

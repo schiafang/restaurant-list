@@ -1,0 +1,23 @@
+<!-- search bar -->
+<div class="container search-bar">
+  <div class="search-bar-inner">
+    <form action="/search">
+      <div class="input-group">
+        <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳、分類" aria-label="Restaurant Name..."
+          value="{{keyword}}" aria-describedby="search-button">
+        <div class="input-group-append">
+          <button class="btn btn-major" type="submit" id="search-button"><i class="fas fa-search"></i></button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<!--not found -->
+<div class="container mb-5 mt-5" style="height: 200px;">
+  <div class="row justify-content-center">
+
+    <div class="mt-5 notfound text-center">
+      <h3>oh no! Restaurant not found</h3>
+    </div>
+  </div>
+</div>
