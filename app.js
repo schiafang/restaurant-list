@@ -31,11 +31,6 @@ app.get('/search', (req, res) => {
   } else {
     res.render('index', { restaurant: restaurants, keyword })
   }
-<<<<<<< HEAD
-})
-
-app.listen(port, () => { console.log(`The server listening on localhost:${port}`) })
-=======
 })
 
 // 載入資料庫資料到首頁樣板中
@@ -104,4 +99,3 @@ app.post('/:id/delete', (req, res) => {
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
->>>>>>> database
