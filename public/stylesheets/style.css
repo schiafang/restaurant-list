@@ -15,9 +15,15 @@ header {
   position: relative;
   z-index: -1;
   margin: -5px;
+<<<<<<< HEAD
   height: 370px;
   background: #dddddd center center url('https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5720/restaurants-list-cover.jpg');
+=======
+  height: 450px;
+   background: #dddddd url('https://images.unsplash.com/photo-1505826759037-406b40feb4cd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1052&q=80');
+>>>>>>> database
   background-size: cover;
+  background-position: 0px 80%;
   filter: blur(1px);
 }
 
@@ -52,6 +58,9 @@ header {
 
 .card img{
   height: 180px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .card-title{
@@ -107,5 +116,41 @@ header {
   .card img{
     height: auto;
   }
-  
+}
+
+.card-footer {
+  height: 30px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  border: none;
+}
+.edit-btn {
+  color: #969595;
+  background-color: transparent;
+  border: none;
+}
+.edit-btn:hover {
+ cursor: pointer;
+}
+.create-form {
+  margin-top: 40px;
+  margin-bottom: 100px;
+  background-color: rgb(240, 240, 240);
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 600px;
+  height: 750px;
+}
+.footer {
+  margin-top: 100px;
+  height: 100px;
+  position: relative;
+  background-color: rgb(231, 231, 232);
+  color: #3a839e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
